@@ -1,0 +1,10 @@
+{
+  "verbose": false,
+  "ext": "js,json",
+  "watch": [
+    "./build"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": true,
+        "trailingComma": "all",
+        "arrowParens": "always"
+      }
+    ],
+    "max-len": ["error", 180],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "no-void": "off",
+    "func-names": "off",
+    "no-await-in-loop": "off",
+    "no-restricted-syntax": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "no-prototype-builtins": "off",
+    "guard-for-in": "off",
+    "no-constant-condition": "off",
+    "no-plusplus": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "env": {
+    "jest": true
+  }
+}
