@@ -1,12 +1,58 @@
-import * as express from 'express';
-const app = express();
-const PORT : string|number = process.env.PORT || 5000;
+import { logger } from './lib/logger';
+import EnvVars from './lib/env-vars';
+import {Server} from "./shared/infra/http/app";
+import { initExpressRoutes } from './shared/infra/http/init-routes';
+import { mongodbConnectionOptions } from './config';
 
-app.use("*",(req, res) =>{
-  res.json({
-    status: 200,
-    message: 'Success run server ...',
-  })
+const env = new EnvVars(
+  {
+    required: [
+      'MONGO_DEFAULT_URI'
+    ],
+    optional: {
+      READPREFERENCE: 'secondaryPreferred',
+      TOPIC: 'Forum-DDD',
+      PORT: process.env.PORT || '6969',
+    },
+  },
+  (err) => logger.error(err.message),
+);
+
+let server;
+(async function(){
+  server = new Server({
+    topic: env.get('TOPIC'),
+    http:{
+      port: Number(env.get('PORT'))
+    },
+    db:{
+      mongodb:{
+        uri: env.get('MONGO_DEFAULT_URI'),
+        // @ts-ignore
+        options: env.get('READPREFERENCE')
+          ? {
+            ...mongodbConnectionOptions,
+            readPreference: process.env.READPREFERENCE,
+          }
+          : mongodbConnectionOptions,
+
+      }
+    }
+  });
+
+  await server.start();
+
+  initExpressRoutes(server);
+
+  process.on('SIGINT', () => server.stop('SIGINT'));
+  process.on('SIGTERM', () => server.stop('SIGTERM'));
+  process.on('uncaughtException', (err) => server.stop(err));
+  process.on('unhandledRejection', (err) => server.stop(err));
+})().catch((err) => {
+  if (server) {
+    server.stop(err);
+  } else {
+    console.error(err);
+    process.exit(1);
+  }
 });
-
-app.listen(PORT,() => console.log(`hosting @${PORT}`));
