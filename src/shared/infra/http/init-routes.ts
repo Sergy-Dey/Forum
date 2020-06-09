@@ -5,6 +5,7 @@ import * as helmet from 'helmet';
 import * as compression from 'compression';
 import * as swaggerUi from 'swagger-ui-express';
 import { Server } from './app';
+import * as path from 'path'
 
 
 
@@ -17,7 +18,7 @@ export function initExpressRoutes(server: Server) {
   server.express.use(morgan('tiny'));
 
   server.express.use('/api/docs', swaggerUi.serve);
-  server.express.use('/api/docs', swaggerUi.setup(require('./swagger.json')));
+  server.express.use('/api/docs', swaggerUi.setup(require(path.join(__dirname, '../../../../docs/swagger.json'))));
 
   // server.express.use('/api/v1', v1Router);
 

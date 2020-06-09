@@ -5,6 +5,7 @@
     "./build"
   ],
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "development",
+    "MONGO_DEFAULT_URI": "mongodb://admin:1qwe3forum@ds040309.mlab.com:40309/forum-ddd"
   }
 }

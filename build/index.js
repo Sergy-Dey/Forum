@@ -12,7 +12,7 @@ const env = new env_vars_1.default({
     optional: {
         READPREFERENCE: 'secondaryPreferred',
         TOPIC: 'Forum-DDD',
-        PORT: '6969',
+        PORT: process.env.PORT || '6969',
     },
 }, (err) => logger_1.logger.error(err.message));
 let server;
