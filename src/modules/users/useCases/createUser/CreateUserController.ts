@@ -14,7 +14,7 @@ export class CreateUserController extends BaseController {
         this.useCase = useCase;
     }
 
-    async executeImpl (req: DecodedExpressRequest, res: express.Response): Promise<any> {
+    async executeImpl (req: express.Request, res: express.Response): Promise<any> {
         let dto: CreateUserDTO = req.body as CreateUserDTO;
 
         dto = {
