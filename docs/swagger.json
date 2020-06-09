@@ -6,15 +6,15 @@
     "version": "0.0.1"
   },
   "produces": ["application/json"],
-  "host": "localhost:8000",
+  "host": "localhost:6969",
   "basePath": "/api/docs/",
   "paths": {
-    "/test1": {
-      "get": {
+    "/api/v1/users": {
+      "post": {
         "x-swagger-router-controller": "middleware-name1",
         "operationId": "swagTest",
-        "tags": ["/test"],
-        "description": "",
+        "tags": ["/create"],
+        "description": "Создание пользователя",
         "parameters": [],
         "responses": {}
       }
