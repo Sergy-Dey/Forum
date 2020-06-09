@@ -7,7 +7,7 @@ import * as swaggerUi from 'swagger-ui-express';
 import { Server } from './app';
 import * as path from 'path'
 
-
+import { v1Router } from './api/v1';
 
 export function initExpressRoutes(server: Server) {
   server.express.use(cors({ origin: '*' }));
@@ -20,7 +20,7 @@ export function initExpressRoutes(server: Server) {
   server.express.use('/api/docs', swaggerUi.serve);
   server.express.use('/api/docs', swaggerUi.setup(require(path.join(__dirname, '../../../../docs/swagger.json'))));
 
-  // server.express.use('/api/v1', v1Router);
+  server.express.use('/api/v1', v1Router);
 
   server.express.get('/', (req, res) => {
     return res.json({ message: "Success init route" });
