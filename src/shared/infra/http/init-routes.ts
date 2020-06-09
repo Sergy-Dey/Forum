@@ -44,25 +44,18 @@ export function initExpressRoutes(server: Server) {
       } else {
         // console.log(req.files)
         //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
-        let avatar = req.files.avatar;
-
-        // console.log(avatar)
+        let avatar: fileUpload.UploadedFile = req.files.avatar as fileUpload.UploadedFile;
 
         //Use the mv() method to place the file in upload directory (i.e. "uploads")
-        // @ts-ignore
-        avatar.mv('./uploads/' + avatar.name);
+        await avatar.mv('./uploads/' + avatar.name);
 
         //send response
-        // @ts-ignore
         res.send({
           status: true,
           message: 'File is uploaded',
           data: {
-            // @ts-ignore
             name: avatar.name,
-            // @ts-ignore
             mimetype: avatar.mimetype,
-            // @ts-ignore
             size: avatar.size
           }
         });
