@@ -7,7 +7,7 @@ export interface UserEmailProps {
 }
 
 export class UserEmail extends ValueObject<UserEmailProps> {
-
+  
   get value () : string {
     return this.props.value;
   }

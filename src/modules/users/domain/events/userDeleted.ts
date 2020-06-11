@@ -11,7 +11,7 @@ export class UserDeleted implements IDomainEvent {
     this.dateTimeOccurred = new Date();
     this.user = user;
   }
-
+  
   getAggregateId (): UniqueEntityID {
     return this.user.id;
   }

@@ -12,7 +12,7 @@ class UserMap {
             username: user.username.value,
             isEmailVerified: user.isEmailVerified,
             isAdminUser: user.isAdminUser,
-            isDeleted: user.isDeleted,
+            isDeleted: user.isDeleted
         };
     }
     static toDomain(raw) {

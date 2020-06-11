@@ -31,7 +31,7 @@ export abstract class BaseController {
     return res.sendStatus(201);
   }
 
-  public static clientError (res: Response, message?: string) {
+  public clientError (res: Response, message?: string) {
     return BaseController.jsonResponse(res, 400, message ? message : 'Unauthorized');
   }
 
@@ -47,7 +47,7 @@ export abstract class BaseController {
     return BaseController.jsonResponse(res, 403, message ? message : 'Forbidden');
   }
 
-  public static notFound (res: Response, message?: string) {
+  public notFound (res: Response, message?: string) {
     return BaseController.jsonResponse(res, 404, message ? message : 'Not found');
   }
 

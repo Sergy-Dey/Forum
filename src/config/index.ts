@@ -1,3 +1,5 @@
+import { authConfig } from "./auth";
+
 export const mongodbConnectionOptions = {
   ssl: false,
   poolSize: 10,
@@ -11,3 +13,10 @@ export const mongodbConnectionOptions = {
   // reconnectTries: Number.MAX_VALUE,
   // timestamps: true,
 };
+
+const isProduction = process.env.DDD_FORUM_IS_PRODUCTION === "true";
+
+export {
+  isProduction,
+  authConfig
+}

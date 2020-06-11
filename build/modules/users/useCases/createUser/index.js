@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createUserUseCase = exports.createUserController = void 0;
-const CreateUserController_1 = require("./CreateUserController");
+exports.createUserController = exports.createUserUseCase = void 0;
 const CreateUserUseCase_1 = require("./CreateUserUseCase");
+const CreateUserController_1 = require("./CreateUserController");
 const repos_1 = require("../../repos");
 const createUserUseCase = new CreateUserUseCase_1.CreateUserUseCase(repos_1.userRepo);
 exports.createUserUseCase = createUserUseCase;

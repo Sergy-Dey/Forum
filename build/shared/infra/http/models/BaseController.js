@@ -28,7 +28,7 @@ class BaseController {
     static created(res) {
         return res.sendStatus(201);
     }
-    static clientError(res, message) {
+    clientError(res, message) {
         return BaseController.jsonResponse(res, 400, message ? message : 'Unauthorized');
     }
     static unauthorized(res, message) {
@@ -40,7 +40,7 @@ class BaseController {
     static forbidden(res, message) {
         return BaseController.jsonResponse(res, 403, message ? message : 'Forbidden');
     }
-    static notFound(res, message) {
+    notFound(res, message) {
         return BaseController.jsonResponse(res, 404, message ? message : 'Not found');
     }
     conflict(res, message) {

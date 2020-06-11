@@ -28,4 +28,28 @@ export class MongoUserRepo implements IUserRepo {
 
     return;
   }
+
+  async getUserByUserName (userName: UserName | string): Promise<User>{
+    const UserModel = this.models.BaseUser;
+    const userNameBase = userName instanceof UserName
+      ? (<UserName>userName).value
+      : userName;
+
+    const baseUser = await UserModel.findOne({
+      username: userNameBase
+    });
+
+    if (!!baseUser === false) throw new Error("User not found.");
+    return UserMap.toDomain(baseUser);
+  }
+
+  async getUserByUserId (userId: string): Promise<User> {
+    const BaseUserModel = this.models.BaseUser;
+    const baseUser = await BaseUserModel.findOne({
+        base_user_id: userId
+    });
+
+    if (!!baseUser === false) throw new Error("User not found.");
+    return UserMap.toDomain(baseUser);
+  }
 }

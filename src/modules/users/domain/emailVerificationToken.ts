@@ -1,12 +1,14 @@
-import {Result} from '../../../shared/core/Result';
-import {ValueObject} from '../../../shared/domain/ValueObject';
+
+import { Result } from "../../../shared/core/Result";
+import { ValueObject } from "../../../shared/domain/ValueObject";
 
 interface IEmailTokenProps {
   token: string;
   expiry: Date;
 }
 
-export class EmailVerificationToken extends ValueObject<IEmailTokenProps>{
+export class EmailVerificationToken extends ValueObject<IEmailTokenProps> {
+
   private static numberDigits = 4;
   private static tokenExpiryHours = 6;
 

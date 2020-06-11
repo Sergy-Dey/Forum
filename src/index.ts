@@ -7,11 +7,15 @@ import { mongodbConnectionOptions } from './config';
 const env = new EnvVars(
   {
     required: [
-      'MONGO_DEFAULT_URI'
+      'MONGO_DEFAULT_URI',
+      'TOPIC',
+      'DDD_FORUM_APP_SECRET',
+      'DDD_FORUM_REDIS_PORT',
+      'DDD_FORUM_REDIS_URL',
+      'DDD_FORUM_REDIS_PASSWORD'
     ],
     optional: {
       READPREFERENCE: 'secondaryPreferred',
-      TOPIC: 'Forum-DDD',
       PORT: process.env.PORT || '6969',
     },
   },

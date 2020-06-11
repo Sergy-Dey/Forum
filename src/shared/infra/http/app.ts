@@ -115,6 +115,7 @@ export class Server {
         this.mongodb.connection.on('disconnected', async () =>
           logger.warn('MONGODB: Connection was closed!')
         );
+
       } catch (err) {
         throw err.message;
       }

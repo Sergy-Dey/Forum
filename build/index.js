@@ -13,6 +13,10 @@ const env = new env_vars_1.default({
         READPREFERENCE: 'secondaryPreferred',
         TOPIC: 'Forum-DDD',
         PORT: process.env.PORT || '6969',
+        DDD_FORUM_APP_SECRET: 'secret',
+        DDD_FORUM_REDIS_PORT: '17242',
+        DDD_FORUM_REDIS_URL: 'redis-17242.c228.us-central1-1.gce.cloud.redislabs.com',
+        DDD_FORUM_REDIS_PASSWORD: '1qwe3forum',
     },
 }, (err) => logger_1.logger.error(err.message));
 let server;

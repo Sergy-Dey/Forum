@@ -1,3 +1,4 @@
+
 import { Mapper } from '../../../shared/infra/Mapper'
 import { User } from '../domain/user';
 import { UserDTO } from '../dtos/userDTO';
@@ -6,17 +7,17 @@ import { UserName } from '../domain/userName';
 import { UserPassword } from '../domain/userPassword';
 import { UserEmail } from '../domain/userEmail';
 
-export class UserMap implements Mapper<User>{
+export class UserMap implements Mapper<User> {
   public static toDTO (user: User): UserDTO {
     return {
       username: user.username.value,
       isEmailVerified: user.isEmailVerified,
       isAdminUser: user.isAdminUser,
-      isDeleted: user.isDeleted,
+      isDeleted: user.isDeleted
     }
   }
 
-  public static toDomain(raw: any): User {
+  public static toDomain (raw: any): User {
     const userNameOrError = UserName.create({ name: raw.username });
     const userPasswordOrError = UserPassword.create({ value: raw.user_password, hashed: true });
     const userEmailOrError = UserEmail.create(raw.user_email);
