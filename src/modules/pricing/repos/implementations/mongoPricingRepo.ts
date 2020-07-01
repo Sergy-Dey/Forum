@@ -16,16 +16,21 @@ export class MongoPricingRepo implements IPricingRepo {
     return !!basePricing === true;
   }
 
-  async save (pricingServiceName: Pricing): Promise<void> {
+  async save (pricingServiceName: Pricing): Promise<any> {
     const PricingModel = this.models.BasePricing;
     const exists = await this.exists(pricingServiceName.serviceName);
 
     if (!exists) {
       const rawSMongoosePricing = await PricingMap.toPersistence(pricingServiceName);
-      await PricingModel.create(rawSMongoosePricing);
-    }
+      const res = await PricingModel.create(rawSMongoosePricing);
 
-    return;
+      return {
+        base_pricing_id: res.base_pricing_id,
+        serviceName: res.serviceName,
+        price: res.price,
+        stage: res.stage,
+      };
+    }
   }
 
   async getPricing(): Promise<any>{

@@ -26,7 +26,6 @@ export class CreatePricingController extends BaseController {
 
     try{
       const result = await this.useCase.execute(dto);
-
       if (result.isLeft()) {
         const error = result.value;
 
@@ -37,9 +36,15 @@ export class CreatePricingController extends BaseController {
             return this.fail(res, error.errorValue().message);
         }
 
-      } else {
-        return this.ok(res);
       }
+
+      if(result.isRight()){
+        const obj = result.value;
+        // @ts-ignore
+        return this.ok<any>(res, obj._value);
+      }
+
+      return this.ok(res);
     } catch (err) {
       return this.fail(res, err)
     }

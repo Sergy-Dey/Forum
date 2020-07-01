@@ -11,9 +11,8 @@ import {PricingPrice} from '../../domain/pricingPrice';
 
 type Response = Either<
   CreatePricingErrors.ServiceNameExistsError |
-  AppError.UnexpectedError |
-  Result<any>,
-  Result<void>
+  AppError.UnexpectedError,
+  Result<any>
 >
 export class CreatePricingUseCase implements UseCase<CreatePricingDTO, Promise<Response>> {
   private pricingRepo: IPricingRepo;
@@ -60,9 +59,9 @@ export class CreatePricingUseCase implements UseCase<CreatePricingDTO, Promise<R
 
       const pricing: Pricing = pricingOrError.getValue();
 
-      await this.pricingRepo.save(pricing);
+      const res = await this.pricingRepo.save(pricing);
 
-      return right(Result.ok<void>())
+      return right(Result.ok<any>(res))
     } catch (err) {
       return left(new AppError.UnexpectedError(err)) as Response;
     }
