@@ -7,11 +7,12 @@ import {PricingServiceName} from '../domain/pricingServiceName';
 import {PricingStage} from '../domain/pricingStage';
 
 export class PricingMap implements Mapper<Pricing> {
-  public static toDTO (pricing: Pricing): PricingDTO {
+  public static toDTO (pricing: any): PricingDTO {
     return {
-      serviceName: pricing.serviceName.value,
-      price: pricing.price.value,
-      stage: pricing.stage.value,
+      id: pricing.base_pricing_id,
+      serviceName: pricing.serviceName,
+      price: pricing.price,
+      stage: pricing.stage,
     }
   }
 

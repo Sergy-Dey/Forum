@@ -10,6 +10,5 @@ export namespace GetUserByUserNameErrors {
         message: `No user with the username ${username} was found`
       } as UseCaseError)
     }
-  } 
-
+  }
 }

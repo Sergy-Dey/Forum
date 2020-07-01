@@ -30,10 +30,16 @@ export class MongoPricingRepo implements IPricingRepo {
 
   async getPricing(): Promise<any>{
     const BasePricingModel = this.models.BasePricing;
-    const basePricing = await BasePricingModel.findAll();
+    return await BasePricingModel.find();
+  }
 
-    return basePricing.map(item => {
-      return PricingMap.toPersistence(item);
+  public delete = async (pricingIds: string[]): Promise<void> => {
+    const BasePricingModel = this.models.BasePricing;
+
+    const promise = pricingIds.map(id=>{
+      return BasePricingModel.findOneAndRemove({base_pricing_id: id})
     });
+
+    await Promise.all(promise);
   }
 }

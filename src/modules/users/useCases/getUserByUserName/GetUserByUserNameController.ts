@@ -18,7 +18,6 @@ export class GetUserByUserNameController extends BaseController {
   async executeImpl (req: DecodedExpressRequest, res: express.Response): Promise<any> {
     const dto: GetUserByUserNameDTO = req.body.decoded as GetUserByUserNameDTO;
 
-    console.log(dto);
     try {
       const result = await this.useCase.execute(dto);
 
