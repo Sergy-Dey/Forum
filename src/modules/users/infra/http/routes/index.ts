@@ -1,4 +1,3 @@
-
 import * as express from 'express'
 import { createUserController } from '../../../useCases/createUser';
 import { deleteUserController } from '../../../useCases/deleteUser';
