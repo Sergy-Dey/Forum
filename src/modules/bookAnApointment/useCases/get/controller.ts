@@ -17,6 +17,7 @@ export class GetBookAnApointmantController {
         return {
           id: el._id,
           fio: el.fio,
+          phone: el.phone,
           email: el.email,
           comment: el.comment,
         }
