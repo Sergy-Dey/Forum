@@ -11,7 +11,7 @@ export class BookAnApointmantRepo implements IBookAnApointmantRepo {
   async get(): Promise<any>{
     try{
       const BaseBookAnApointmantModel = this.models.BaseBookAnApointment;
-      return await BaseBookAnApointmantModel.find();
+      return await BaseBookAnApointmantModel.find().sort({'createdAt': 'desc'})
     } catch (e) {
       console.log("Error BookAnApointmantRepo method get");
       throw new Error(e);
