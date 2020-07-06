@@ -12,14 +12,12 @@ export class CreteEmployeesController {
 
   async execute(req: express.Request, res: express.Response): Promise<any>{
     try {
-      // console.log(req.body);
       // @ts-ignore
       const bitmapBuff = Buffer.from(req.files.file.data).toString('base64');
       const dto = {
         fio: req.body.fio,
         email: req.body.email,
         position: req.body.position,
-        // @ts-ignore
         avatar: bitmapBuff,
       } as IEmployeesDTO;
 
@@ -27,7 +25,7 @@ export class CreteEmployeesController {
       await this.employeesRepo.save(dto);
       res.type('application/json');
       return res.status(200).json({
-        tets: "TEst"
+        success: true
       });
     }catch (e) {
       console.log("Error Employees in controller Create");

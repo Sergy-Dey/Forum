@@ -14,10 +14,10 @@ export interface BaseEmployeesModel extends Model<BaseEmployeesDocument> {}
 
 export const BaseEmployeesSchema: Schema = new Schema(
   {
-    fio: { type: String, required: true, unique: true },
-    email: {type: String, required: true},
-    avatar:{type: String, default: true},
-    position: {type: String, default: true}
+    fio: { type: String, required: true },
+    email: {type: String, default: ''},
+    avatar:{type: String, default: ''},
+    position: {type: String, default: ''}
   },
   {
     timestamps: true,

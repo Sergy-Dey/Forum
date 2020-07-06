@@ -28,15 +28,13 @@ export class MongoEmployeesRepo implements IEmployeesRepo {
     }
   }
 
-  async delete(ids: string[]): Promise<any>{
+  async delete(id: string): Promise<boolean>{
     try {
       const BaseEmployeesModel = this.models.BaseEmployees;
 
-      const promise = ids.map(id=>{
-        return BaseEmployeesModel.findOneAndRemove({_id: id})
-      });
+      await BaseEmployeesModel.findOneAndRemove({_id: id});
 
-      await Promise.all(promise);
+      return true;
     } catch (error) {
       console.log("Error on Repo Employees GetAll");
       throw new Error(error);
