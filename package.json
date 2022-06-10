@@ -92,7 +92,7 @@
     "lint-staged": "^10.0.7",
     "nodemon": "^1.19.1",
     "prettier": "^1.17.0",
-    "semantic-release": "^17.0.4"
+    "semantic-release": "^19.0.3"
   },
   "repository": {
     "type": "git",
